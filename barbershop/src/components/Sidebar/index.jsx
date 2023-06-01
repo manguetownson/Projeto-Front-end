@@ -1,6 +1,7 @@
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/BarbeariaEstiloMaloka.png'
-const Sidebar = ({location}) => {
+const Sidebar = () => {
+    const location = useLocation()
     return(
         <sidebar className="col-2 h-100">
             <img src={logo} className='img-fluid px-3 py-4'/>
@@ -22,4 +23,4 @@ const Sidebar = ({location}) => {
     );
 };
 
-export default withRouter(Sidebar);
+export default Sidebar;
