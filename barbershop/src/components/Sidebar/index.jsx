@@ -1,14 +1,24 @@
+import { Link } from 'react-router-dom';
+import logo from '../../assets/BarbeariaEstiloMaloka.png'
 const Sidebar = () => {
     return(
-        <header className="container-fluid d-flex justify-content-end">
-            <div className="d-flex align-items-center">
-                <div>
-                    <span>Barbearia EstiloMaloka</span>
-                    <small>Plano Anual</small>
-                </div>
-                <span className="mdi mdi-chevron-down"></span>
-            </div>    
-        </header>
+        <sidebar className="col-2 h-100">
+            <img src={logo} className='img-fluid px-3 py-4'/>
+            <ul>
+                <li>
+                    <Link to="/">
+                    <span className='mdi mdi-calendar-check'></span>
+                    <text>Agendamentos</text>
+                    </Link>
+                </li>
+                <li>
+                <Link to="/clientes">
+                <span className='mdi mdi-account-multiple'></span>
+                    <text>Clientes</text>
+                </Link>
+                </li>
+            </ul>
+        </sidebar>
     );
 };
 

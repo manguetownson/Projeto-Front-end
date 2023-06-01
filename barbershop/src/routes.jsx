@@ -9,17 +9,17 @@ import Agendamentos from './pages/Agendamentos';
 import Clientes from './pages/Clientes';
 
 
-const Routes1 = () => {
+const Routes1= () => {
     return (
         <>
         <Header />
-        <div className='container-fluid h-100'>
+        <div className='container-fluid h-100'> 
             <div className='row h-100'>
             <Router> 
             <Sidebar />   
              <Routes>
-                <Route path="/" element={Agendamentos}  />
-                <Route path="/clientes" element={Clientes} />
+                <Route path="/" exact component={Agendamentos}  />
+                <Route path="/clientes" exact component={Clientes} />
              </Routes> 
             </Router>       
             </div>
