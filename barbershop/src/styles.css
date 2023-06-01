@@ -47,3 +47,19 @@ header small{
     margin-top: -20px;
 }
 
+sidebar{
+    background-color: var(--dark);
+}
+
+sidebar ul li a{
+    width: 100%;
+    color: #fff;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    margin: 2.5px 0;
+    transition: 0.5s;
+    border-radius: 5px;
+}
+
