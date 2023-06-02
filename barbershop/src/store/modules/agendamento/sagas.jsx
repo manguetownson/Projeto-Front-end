@@ -3,7 +3,7 @@ import types from './types';
 import api from '../../../services/api';
 import consts from '../../../consts';
 
-export function filterAgendamento(start,end){
+export function* filterAgendamento(start,end){
     try {
         const res = yield call(api.post('/agendamento/filter',{
             salaoId:consts.salaoId,
@@ -12,6 +12,7 @@ export function filterAgendamento(start,end){
                 final:end,
             },
         }));
+        return res;
     } catch (error) {
         alert(error.message);
     }
