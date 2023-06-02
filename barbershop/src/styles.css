@@ -47,11 +47,11 @@ header small{
     margin-top: -20px;
 }
 
-sidebar{
+aside{
     background-color: var(--dark);
 }
 
-sidebar ul li a{
+aside ul li a{
     width: 100%;
     color: #fff;
     opacity: 0.6;
@@ -63,30 +63,31 @@ sidebar ul li a{
     transition: 0.5s;
     border-radius: 5px;
 }
-sidebar ul li a.active{
+aside ul li a.active{
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.6);
 }
-sidebar ul li a.active .mdi{
+aside ul li a.active .mdi{
     color:var(--primary);
 }
 
-sidebar ul li a:visited,
-sidebar ul li a:focus{
+aside ul li a:visited,
+aside ul li a:focus{
     color: #fff;
 }
 
-sidebar ul li a:hover{
+aside ul li a:hover{
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-sidebar ul li a span.mdi{
+aside ul li a span.mdi{
     font-size: 25px;
     margin:0 15px;
 
 }
 
-sidebar ul li a text{
+aside ul li a p{
     font-size: 14px;
+    margin-top: 15px;
 }

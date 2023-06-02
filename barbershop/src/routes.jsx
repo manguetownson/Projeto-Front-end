@@ -18,8 +18,8 @@ const Routes1= () => {
             <Router> 
             <Sidebar />   
              <Routes>
-                <Route path="/" element={Agendamentos}  />
-                <Route path="/clientes" element={Clientes} />
+                <Route path="/" element={<Agendamentos/>}  />
+                <Route path="/clientes" element={<Clientes/>} />
              </Routes> 
             </Router>       
             </div>
