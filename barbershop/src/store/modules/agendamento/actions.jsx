@@ -6,3 +6,7 @@ export function filterAgendamentos(start,end){
         end,
     }
 }
+
+export function updateAgendamento(agendamentos){
+    return{type:types.UPDATE_AGENDAMENTO,agendamentos}
+}
