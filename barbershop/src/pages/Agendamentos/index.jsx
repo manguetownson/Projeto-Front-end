@@ -2,23 +2,45 @@ import { useEffect } from "react";
 import { Calendar,momentLocalizer } from "react-big-calendar";
 import moment from "moment/moment";
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import{ filterAgendamentos} from '../../store/modules/agendamento/actions'
-
+import util from "../../util";
 const localizer = momentLocalizer(moment);
 
 
 const Agendamentos = () => {
 
-    const dispach = useDispatch();
-    useEffect(()=>{
-        dispach(
-            filterAgendamentos(
-                moment().weekday(0).format('YYYY-MM-DD'),
-                moment().weekday(6).format('YYYY-MM-DD')
-            )
-        );
-    },[])
+    const dispatch = useDispatch();
+    const {agendamentos} = useSelector((state)=> state.agendamento);
+
+    const fotmatEventos = agendamentos.map((agendamento)=>({
+        title:`${agendamento.servicoId.titulo} - ${agendamento.clienteId.nome} - ${agendamento.colaboradorId.nome}`,
+        start: moment(agendamento.data).toDate(),
+        end: moment(agendamento.data).add(util.hourToMinutes(moment(agendamento.servicoId.duracao).format('HH:mm')),'minutes').toDate(),
+    }))
+
+    const formatRange = (periodo)=>{
+let finalRange = {};
+if (Array.isArray(periodo)) {
+    finalRange = {
+        start: moment(periodo[0]).format('YYYY-MM-DD'),
+        end: moment(periodo[periodo.length - 1]).format('YYYY-MM-DD')
+    };
+}else{
+    finalRange = {
+        start: moment(periodo.start).format('YYYY-MM-DD'),
+        end: moment(periodo.end).format('YYYY-MM-DD')
+    };
+}
+    }
+    // useEffect(()=>{
+    //     dispatch(
+    //         filterAgendamentos(
+    //             moment().weekday(0).format('YYYY-MM-DD'),
+    //             moment().weekday(6).format('YYYY-MM-DD')
+    //         )
+    //     );
+    // },[])
     return (
     <div className="col p-5 overflow-auto h-100">
         <div className="row">
@@ -26,13 +48,14 @@ const Agendamentos = () => {
                 <h2 className="mb-4 mt-0">Agendamentos</h2>
                 <Calendar
                 localizer={localizer}
-                events={[
-                    {
-                        title:'Evento Teste',
-                        start: moment().toDate(),
-                        end: moment().add(30,'minutes').toDate(),
-                    },
-                ]}
+                onRangeChange={(periodo)=>{
+                    const {start,end} = formatRange(periodo)
+                    dispatch(
+                        filterAgendamentos(start,end)
+                    );
+                    
+                }}
+                events={fotmatEventos}
                 defaultView="week"
                 selectable
                 popup
