@@ -22,7 +22,8 @@
     "react-router-dom": "^6.11.2",
     "redux-devtools": "^3.7.0",
     "redux-devtools-extension": "^2.13.9",
-    "redux-saga": "^1.2.3"
+    "redux-saga": "^1.2.3",
+    "rsuite": "^5.35.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
